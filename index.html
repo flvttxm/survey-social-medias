@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Playdate ❤️</title>
+
+<style>
+body {
+    margin: 0;
+    height: 100vh;
+    background: linear-gradient(#8ed6ff, #ffffff);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    overflow: hidden;
+}
+
+.container {
+    background: rgba(255,255,255,0.85);
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+h1 {
+    color: #333;
+    font-size: 30px;
+}
+
+img {
+    width: 260px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+button {
+    font-size: 20px;
+    padding: 12px 30px;
+    margin: 10px;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+}
+
+#yesBtn {
+    background: #ff8fcf;
+    color: white;
+}
+
+#noBtn {
+    background: #ddd;
+}
+
+.copyright {
+    position: fixed;
+    bottom: 15px;
+    right: 20px;
+    font-size: 13px;
+    color: rgba(0,0,0,0.45);
+    font-style: italic;
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+    <img id="stitch" src="" style="display:none;" alt="Stitch">
+
+    <h1 id="question">
+        Do you wanna have a playdate together? 💙
+    </h1>
+
+    <button id="yesBtn" onclick="yesClick()">
+        Yes ❤️
+    </button>
+
+    <button id="noBtn" onclick="noClick()">
+        No
+    </button>
+
+</div>
+
+
+<div class="copyright">
+    © flvttxm
+</div>
+
+
+<script>
+
+let noCount = 0;
+
+
+function noClick() {
+
+    noCount++;
+
+    let noButton = document.getElementById("noBtn");
+    let stitch = document.getElementById("stitch");
+    let question = document.getElementById("question");
+
+
+    // Flytter Nei-knappen rundt
+    noButton.style.position = "absolute";
+
+    noButton.style.left =
+    Math.random() * (window.innerWidth - 120) + "px";
+
+    noButton.style.top =
+    Math.random() * (window.innerHeight - 60) + "px";
+
+
+    // Etter 10 forsøk
+    if (noCount >= 10) {
+
+        stitch.src = "stitch-mad.png";
+        stitch.style.display = "block";
+
+        question.innerHTML =
+        "STITCH IS MAD 😡<br>???????????????";
+
+        noButton.style.display = "none";
+    }
+
+}
+
+
+
+function yesClick() {
+
+    let stitch = document.getElementById("stitch");
+    let question = document.getElementById("question");
+
+
+    stitch.src = "stitch-happy.png";
+    stitch.style.display = "block";
+
+
+    question.innerHTML =
+    "I love you Rhea ❤️";
+
+
+    document.getElementById("yesBtn").style.display = "none";
+    document.getElementById("noBtn").style.display = "none";
+
+}
+
+</script>
+
+
+</body>
+</html>
